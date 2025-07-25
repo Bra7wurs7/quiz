@@ -75,16 +75,16 @@
         "difficulty": 4,
         "content": "",
         "solution": "",
-        "img_src": "/images/q5.png",
-        "solution_img_src": "/images/q5edit.png",
+        "img_src": "/images/q5edit.png",
+        "solution_img_src": "/images/q5.png",
         "audio_src": ""
       },
       {
         "difficulty": 5,
         "content": "",
         "solution": "",
-        "img_src": "/images/q3.png",
-        "solution_img_src": "/images/q3edit.png",
+        "img_src": "/images/q3edit.png",
+        "solution_img_src": "/images/q3.png",
         "audio_src": ""
       }
     ]
@@ -139,40 +139,40 @@
     "questions": [
       {
         "difficulty": 1,
-        "content": "a",
-        "solution": "",
+        "content": "",
+        "solution": "'Star Wars (Main Theme)' by John Williams - Star Wars",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": "/audio/m1.mp3"
       },
       {
         "difficulty": 2,
-        "content": "d2",
-        "solution": "",
+        "content": "",
+        "solution": "'He's a Pirate' by Klaus Badelt - Fluch der Karibik",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": "/audio/m2.mp3"
       },
       {
         "difficulty": 3,
-        "content": "d3",
-        "solution": "",
+        "content": "",
+        "solution": "'Test Drive' by John Powell - Drachenzähmen Leicht Gemacht",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": "/audio/m3.mp3"
       },
       {
         "difficulty": 4,
-        "content": "d4",
-        "solution": "",
+        "content": "",
+        "solution": "'Arrival to Earth' by Steve Jablonsky - Transformers",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": "/audio/m4.mp3"
       },
       {
         "difficulty": 5,
-        "content": "d5",
-        "solution": "",
+        "content": "",
+        "solution": "'Godzilla Suite III' by Naoki Sato - Godzilla",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": "/audio/m5.mp3"
@@ -180,44 +180,44 @@
     ]
   },
   {
-    "name": "e",
+    "name": "Emoji",
     "questions": [
       {
         "difficulty": 1,
-        "content": "e1",
-        "solution": "",
+        "content": "🔥🌊🌱💨",
+        "solution": "Avatar: the Last Airbender",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 2,
-        "content": "e2",
-        "solution": "",
+        "content": "💪⚡🕷️🤖🏹",
+        "solution": "The Avengers",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 3,
-        "content": "e3",
-        "solution": "",
+        "content": "🟡👨‍👩‍👧‍👦🛋️🏠",
+        "solution": "The Simpsons",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 4,
-        "content": "e4",
-        "solution": "",
+        "content": "🥚▶️🕷️▶️🐛▶️👽",
+        "solution": "Alien",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 5,
-        "content": "e5",
-        "solution": "",
+        "content": "👧🌺 + 🔵🐕(👽) =👪",
+        "solution": "Lilo & Stitch",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
