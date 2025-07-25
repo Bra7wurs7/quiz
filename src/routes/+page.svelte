@@ -65,7 +65,7 @@
     }
 
     function on_click_question(question: Question) {
-        if (viewed_question?.content === question.content) {
+        if (viewed_question === question) {
             return (viewed_question = undefined);
         } else {
             return (viewed_question = question);
@@ -106,9 +106,7 @@
                 onclick={() => on_click_question(question)}
                 class="col{j + 2} row{i + 1} quiz_question
                     {question.solved ? 'answered' : ''}
-                    {question.content === viewed_question?.content
-                    ? 'semi_full_screen'
-                    : ''}"
+                    {question === viewed_question ? 'semi_full_screen' : ''}"
             >
                 {#if question.content === viewed_question?.content}
                     <div class="question_header">
