@@ -4,13 +4,31 @@
         questions: Question[];
     }
 
-    interface Question {
+    class Question {
         difficulty: number;
         content: string;
         solution: string;
         solution_img_src: string | undefined;
         img_src: string | undefined;
         audio_src: string | undefined;
+        solved: boolean;
+        constructor(
+            d: number,
+            c: string,
+            s: string,
+            sis?: string,
+            is?: string,
+            as?: string,
+            sol?: boolean,
+        ) {
+            this.difficulty = d;
+            this.content = c;
+            this.solution = s;
+            this.solution_img_src = sis;
+            this.img_src = is;
+            this.audio_src = as;
+            this.solved = $state(sol ?? false);
+        }
     }
 
     class Participant {
@@ -30,8 +48,6 @@
     ];
     let lost_points: Participant = $state(new Participant(""));
     let viewed_question = $state<Question | undefined>(undefined);
-    let showsolution = $state<boolean>(false);
-    let solved_questions = $state<Question[]>([]);
 
     function generateQuizData(
         numCategories: number,
@@ -44,16 +60,16 @@
             const questions: Question[] = [];
 
             for (let j = 0; j < numQuestionsPerCategory; j++) {
-                questions.push({
-                    difficulty: j + 1,
-                    content: `This is the placeholder content for question ${j + 1} in category "${categoryName}".`,
-                    solution: `This is the placeholder solution for question ${j + 1} in category "${categoryName}".`,
-                    img_src:
+                questions.push(
+                    new Question(
+                        j + 1,
+                        `This is the placeholder content for question ${j + 1} in category "${categoryName}".`,
+                        `This is the placeholder solution for question ${j + 1} in category "${categoryName}".`,
                         "https://www.watchmojo.com/articles/top-10-star-wars-characters",
-                    solution_img_src:
                         "https://upload.wikimedia.org/wikipedia/commons/c/ce/Star_wars2.svg",
-                    audio_src: "audio/mother.mp3",
-                });
+                        "audio/mother.mp3",
+                    ),
+                );
             }
 
             categories.push({
@@ -66,9 +82,7 @@
     }
 
     function on_click_question(question: Question) {
-        showsolution = false;
         if (viewed_question?.content === question.content) {
-            showsolution = false;
             return (viewed_question = undefined);
         } else {
             return (viewed_question = question);
@@ -76,23 +90,12 @@
     }
 
     function on_click_participant(participant: Participant) {
-        let q = [...solved_questions];
-        showsolution = true;
         if (viewed_question !== undefined) {
-            if (q.includes(viewed_question)) {
-                q.splice(
-                    q.findIndex(
-                        (qu) => qu.content === viewed_question?.content,
-                    ),
-                    1,
-                );
-                participant.score -= viewed_question.difficulty;
-            } else {
-                q.push(viewed_question);
-                participant.score += viewed_question.difficulty;
-            }
+            viewed_question.solved = !viewed_question.solved;
+            participant.score = viewed_question.solved
+                ? participant.score + viewed_question.difficulty
+                : participant.score - viewed_question.difficulty;
         }
-        solved_questions = q;
     }
 </script>
 
@@ -104,11 +107,7 @@
             <button
                 onclick={() => on_click_question(question)}
                 class="col{j + 2} row{i + 1} quiz_question
-                    {solved_questions.find(
-                    (qa) => qa.content === question.content,
-                ) !== undefined
-                    ? 'answered'
-                    : ''}
+                    {question.solved ? 'answered' : ''}
                     {question.content === viewed_question?.content
                     ? 'semi_full_screen'
                     : ''}"
@@ -118,13 +117,13 @@
                         {category.name} - {question.difficulty} Punkte
                     </div>
                     <div class="question_content">
-                        {#if !showsolution}
+                        {#if !question.solved}
                             {question.content}
                             {#if question.img_src !== undefined}
                                 <img src={question.img_src} alt="" />
                             {/if}
                         {/if}
-                        {#if showsolution}
+                        {#if question.solved}
                             {question.solution}
                             {#if question.solution_img_src !== undefined}
                                 <img src={question.solution_img_src} alt="" />
