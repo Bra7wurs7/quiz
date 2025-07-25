@@ -151,7 +151,7 @@
         "solution": "",
         "img_src": "",
         "solution_img_src": "",
-        "audio_src": ""
+        "audio_src": "/audio/m2.mp3"
       },
       {
         "difficulty": 3,
@@ -159,7 +159,7 @@
         "solution": "",
         "img_src": "",
         "solution_img_src": "",
-        "audio_src": ""
+        "audio_src": "/audio/m3.mp3"
       },
       {
         "difficulty": 4,
@@ -167,7 +167,7 @@
         "solution": "",
         "img_src": "",
         "solution_img_src": "",
-        "audio_src": ""
+        "audio_src": "/audio/m4.mp3"
       },
       {
         "difficulty": 5,
@@ -175,7 +175,7 @@
         "solution": "",
         "img_src": "",
         "solution_img_src": "",
-        "audio_src": ""
+        "audio_src": "/audio/m5.mp3"
       }
     ]
   },
