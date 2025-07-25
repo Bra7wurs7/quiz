@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { onMount } from "svelte";
+
     interface Category {
         name: string;
         questions: Question[];
@@ -13,21 +15,21 @@
         audio_src: string | undefined;
         solved: boolean;
         constructor(
-            d: number,
-            c: string,
-            s: string,
-            sis?: string,
-            is?: string,
-            as?: string,
-            sol?: boolean,
+            difficulty: number,
+            content: string,
+            solution: string,
+            solution_img_src?: string,
+            img_srg?: string,
+            audio_src?: string,
+            solved?: boolean,
         ) {
-            this.difficulty = d;
-            this.content = c;
-            this.solution = s;
-            this.solution_img_src = sis;
-            this.img_src = is;
-            this.audio_src = as;
-            this.solved = $state(sol ?? false);
+            this.difficulty = difficulty;
+            this.content = content;
+            this.solution = solution;
+            this.solution_img_src = solution_img_src;
+            this.img_src = img_srg;
+            this.audio_src = audio_src;
+            this.solved = $state(solved ?? false);
         }
     }
 
@@ -40,44 +42,25 @@
         }
     }
 
-    let categories: Category[] = generateQuizData(5, 5);
+    let categories: Category[] | undefined = $state(undefined);
 
-    let participants: Participant[] = [
-        new Participant("Gute Gruppe"),
-        new Participant("Tolles Team"),
-    ];
+    let participants: Participant[] = $state([]);
+    let new_participant_name: string = $state("");
     let lost_points: Participant = $state(new Participant(""));
     let viewed_question = $state<Question | undefined>(undefined);
 
-    function generateQuizData(
-        numCategories: number,
-        numQuestionsPerCategory: number,
-    ): Category[] {
-        const categories: Category[] = [];
+    onMount(() => {
+        readQuizData("questions").then((quiz) => {
+            categories = quiz;
+        });
+    });
 
-        for (let i = 0; i < numCategories; i++) {
-            const categoryName = String.fromCharCode(97 + i);
-            const questions: Question[] = [];
-
-            for (let j = 0; j < numQuestionsPerCategory; j++) {
-                questions.push(
-                    new Question(
-                        j + 1,
-                        `This is the placeholder content for question ${j + 1} in category "${categoryName}".`,
-                        `This is the placeholder solution for question ${j + 1} in category "${categoryName}".`,
-                        "https://www.watchmojo.com/articles/top-10-star-wars-characters",
-                        "https://upload.wikimedia.org/wikipedia/commons/c/ce/Star_wars2.svg",
-                        "audio/mother.mp3",
-                    ),
-                );
-            }
-
-            categories.push({
-                name: categoryName,
-                questions: questions,
-            });
+    async function readQuizData(quiz_name: string): Promise<Category[]> {
+        const response = await fetch(`/json/${quiz_name}.json`);
+        if (!response.ok) {
+            throw new Error("Failed to load quiz data");
         }
-
+        const categories: Category[] = await response.json();
         return categories;
     }
 
@@ -97,10 +80,25 @@
                 : participant.score - viewed_question.difficulty;
         }
     }
+
+    function on_keydown_participant_input(e: KeyboardEvent) {
+        switch (e.key) {
+            case "Enter":
+                enter_participant();
+                break;
+            default:
+                break;
+        }
+    }
+
+    function enter_participant() {
+        participants.push(new Participant(new_participant_name));
+        new_participant_name = "";
+    }
 </script>
 
 <div class="dark_theme app">
-    {#each categories as category, i (category.name)}
+    {#each categories ?? [] as category, i (category.name)}
         <div class="col1 row{i + 1} quiz_category">{category.name}</div>
 
         {#each category.questions as question, j (question.content)}
@@ -119,21 +117,21 @@
                     <div class="question_content">
                         {#if !question.solved}
                             {question.content}
-                            {#if question.img_src !== undefined}
+                            {#if question.img_src}
                                 <img src={question.img_src} alt="" />
                             {/if}
                         {/if}
                         {#if question.solved}
                             {question.solution}
-                            {#if question.solution_img_src !== undefined}
+                            {#if question.solution_img_src}
                                 <img src={question.solution_img_src} alt="" />
                             {/if}
                         {/if}
                     </div>
-                    {#if question.audio_src !== undefined}
+                    {#if question.audio_src}
                         <audio controls src={question.audio_src}> </audio>
                     {/if}
-                    {#if question.audio_src === undefined && question.img_src === undefined}
+                    {#if question.audio_src && question.img_src}
                         <div></div>
                     {/if}
                     <div></div>
@@ -158,7 +156,11 @@
                     </div>
                 </button>
             {/each}
-            <input class="quiz_participant" />
+            <input
+                class="quiz_participant"
+                onkeydown={on_keydown_participant_input}
+                bind:value={new_participant_name}
+            />
         </div>
         <button
             class="quiz_participant pointer"
@@ -411,5 +413,9 @@
         &:focus {
             outline: none;
         }
+    }
+
+    button {
+        font-family: cstm;
     }
 </style>
