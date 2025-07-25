@@ -1,43 +1,43 @@
 [
   {
-    "name": "a",
+    "name": "Trivia",
     "questions": [
       {
         "difficulty": 1,
-        "content": "a1",
-        "solution": "Foober",
+        "content": "In Welchem Jahr kam der erste Star Wars Film in die Kinos?",
+        "solution": "1977",
         "img_src": "",
-        "solution_img_src": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Star_wars2.svg",
+        "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 2,
-        "content": "a2",
-        "solution": "",
+        "content": "Wieviele Filme gibt es aktuell (Juli 2025) im MCU (Marvel Cinematic Universe)?",
+        "solution": "36",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 3,
-        "content": "a3",
-        "solution": "",
+        "content": "Im Durchschnitt, wie alt war der Hauptcast von Harry Potter (Harry, Ron und Hermine) während den Dreharbeiten von 'Der Stein der Weisen'?",
+        "solution": "ca. 11",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 4,
-        "content": "a4",
-        "solution": "",
+        "content": "Wie hoch war das Budget vom Film 'Jurassic Park'?",
+        "solution": "63 Millionen",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
       },
       {
         "difficulty": 5,
-        "content": "a5",
-        "solution": "",
+        "content": "Wieviele James Bond Schauspieler gab es insgesamt?",
+        "solution": "6 (Sean Connery, George Lazenby, Roger Moore, Timothy Dalton, Pierce Brosnan, Daniel Craig)",
         "img_src": "",
         "solution_img_src": "",
         "audio_src": ""
@@ -45,52 +45,52 @@
     ]
   },
   {
-    "name": "b",
+    "name": "Scenes",
     "questions": [
       {
         "difficulty": 1,
-        "content": "b1",
+        "content": "",
         "solution": "",
-        "img_src": "",
-        "solution_img_src": "",
+        "img_src": "/images/q1edit.jpg",
+        "solution_img_src": "/images/q1.jpg",
         "audio_src": ""
       },
       {
         "difficulty": 2,
-        "content": "b2",
+        "content": "",
         "solution": "",
-        "img_src": "",
-        "solution_img_src": "",
+        "img_src": "/images/q2.png",
+        "solution_img_src": "/images/q2s.png",
         "audio_src": ""
       },
       {
         "difficulty": 3,
-        "content": "b3",
+        "content": "",
         "solution": "",
-        "img_src": "",
-        "solution_img_src": "",
+        "img_src": "/images/q4edit.png",
+        "solution_img_src": "/images/q4.jpg",
         "audio_src": ""
       },
       {
         "difficulty": 4,
-        "content": "b4",
+        "content": "",
         "solution": "",
-        "img_src": "",
-        "solution_img_src": "",
+        "img_src": "/images/q5.png",
+        "solution_img_src": "/images/q5edit.png",
         "audio_src": ""
       },
       {
         "difficulty": 5,
-        "content": "b5",
+        "content": "",
         "solution": "",
-        "img_src": "",
-        "solution_img_src": "",
+        "img_src": "/images/q3.png",
+        "solution_img_src": "/images/q3edit.png",
         "audio_src": ""
       }
     ]
   },
   {
-    "name": "c",
+    "name": "Charaktere",
     "questions": [
       {
         "difficulty": 1,
@@ -120,7 +120,7 @@
         "difficulty": 4,
         "content": "c4",
         "solution": "",
-        "img_src": "",
+        "img_src": "/images/q4edit.png",
         "solution_img_src": "",
         "audio_src": ""
       },
@@ -135,15 +135,15 @@
     ]
   },
   {
-    "name": "d",
+    "name": "Soundtracks",
     "questions": [
       {
         "difficulty": 1,
-        "content": "d1",
+        "content": "",
         "solution": "",
         "img_src": "",
         "solution_img_src": "",
-        "audio_src": ""
+        "audio_src": "/audio/m1.mp3"
       },
       {
         "difficulty": 2,
