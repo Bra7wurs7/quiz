@@ -101,7 +101,7 @@
     {#each categories ?? [] as category, i (category.name)}
         <div class="col1 row{i + 1} quiz_category">{category.name}</div>
 
-        {#each category.questions as question, j (question.content)}
+        {#each category.questions as question, j (question)}
             <button
                 onclick={() => on_click_question(question)}
                 class="col{j + 2} row{i + 1} quiz_question
@@ -417,5 +417,9 @@
 
     button {
         font-family: cstm;
+    }
+
+    img {
+        max-width: 100%;
     }
 </style>
